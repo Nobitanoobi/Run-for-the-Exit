@@ -1,0 +1,18 @@
+using UnityEngine;
+
+public class MyTags : MonoBehaviour
+{
+    public static string JUMP_ANIMATION = "Jump";
+    public static string RUN_ANIMATION = "Run";
+    public static string ATTACK_ANIMATION = "Attack";
+    public static string DEAD_ANIMATION = "Dead";
+
+    public static string RUN_TRIGGER = "Run";
+    public static string ATTACK_TRIGGER = "Attack";
+    public static string STOP_TRIGGER = "Stop";
+    public static string JUMP_TRIGGER = "Jump";
+
+    public static string PLAYER_TAG = "Player";
+    public static string ENEMY_TAG = "Enemy";
+    public static string COIN_TAG = "Coin";
+}
