@@ -5,6 +5,7 @@ public class MyTags : MonoBehaviour
     public static string JUMP_ANIMATION = "Jump";
     public static string RUN_ANIMATION = "Run";
     public static string ATTACK_ANIMATION = "Attack";
+    public static string RUN_ATTACK_ANIMATION = "RunAttack";
     public static string DEAD_ANIMATION = "Dead";
 
     public static string RUN_TRIGGER = "Run";

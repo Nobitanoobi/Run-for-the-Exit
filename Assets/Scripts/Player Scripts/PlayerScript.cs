@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private float moveSpeed = .8f;
-    private float rotationSpeed = 5f;
+    private float moveSpeed = .5f;
+    private float rotationSpeed = 4f;
     private float jumpForce = 3f;
     private bool canJump = false;
     private bool isPlayerMove = false;
@@ -37,6 +37,8 @@ public class PlayerScript : MonoBehaviour
     {
         PlayerInput();
         PlayerAnimate();
+        Attack();
+        Jump();
     }
 
     void FixedUpdate()
@@ -86,4 +88,51 @@ public class PlayerScript : MonoBehaviour
             }
         }
     }
+    
+    void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if(!anim.GetCurrentAnimatorStateInfo(0).IsName(MyTags.ATTACK_ANIMATION)|| 
+            !anim.GetCurrentAnimatorStateInfo(0).IsName(MyTags.RUN_ATTACK_ANIMATION))
+            {
+                anim.SetTrigger(MyTags.ATTACK_TRIGGER);
+            }
+        }
+    }
+    void Jump()
+    {
+        canJump = Physics.Raycast(groundCheck.position, Vector3.down, .1f, groundLayer);
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            if (canJump)
+            {
+                canJump = false;
+                rb.AddForce(Vector3.up * moveSpeed * jumpForce, ForceMode.Impulse);
+                anim.SetTrigger(MyTags.JUMP_TRIGGER);
+            }
+        }
+       
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
