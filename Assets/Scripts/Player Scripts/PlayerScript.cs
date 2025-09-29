@@ -7,9 +7,7 @@ public class PlayerScript : MonoBehaviour
     private float jumpForce = 3f;
     private bool canJump = false;
     private bool isPlayerMove = false;
-    [SerializeField]
     private float verticalMove = 0 ;
-    [SerializeField]
     private float horizontalMove = 0;
     private float rotY = 0;
 
@@ -18,6 +16,10 @@ public class PlayerScript : MonoBehaviour
 
     public LayerMask groundLayer;
     public Transform groundCheck;
+
+    public GameObject hitBox;
+
+    
 
 
     private void Awake()
@@ -116,6 +118,17 @@ public class PlayerScript : MonoBehaviour
         }
        
     }
+    void EnableHitBox()
+    {
+        hitBox.SetActive(true);
+    }
+
+    void DisableHitBox()
+    {
+        hitBox.SetActive(false);
+    }
+
+
 }
 
 

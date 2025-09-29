@@ -9,7 +9,7 @@ public class EnemyScript : MonoBehaviour
     private float speed = 10f;
     private float attackThreshold = 6f;
     private float watchThreshold = 70;
-
+    public GameObject hitBox;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -62,5 +62,14 @@ public class EnemyScript : MonoBehaviour
             }
                
         }
+    }
+    void EnableHitBox()
+    {
+        hitBox.SetActive(true);
+    }
+
+    void DisableHitBox()
+    {
+        hitBox.SetActive(false);
     }
 }
