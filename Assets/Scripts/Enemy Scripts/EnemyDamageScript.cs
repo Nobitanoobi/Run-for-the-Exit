@@ -1,9 +1,12 @@
+using NUnit.Framework;
 using UnityEngine;
 
 public class EnemyDamageScript : MonoBehaviour
 {
     public LayerMask playerLayer;
-    public int damageAmount = 2;
+    private int damageAmount = 2;
+
+    private bool isAttack = false;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -17,12 +20,14 @@ public class EnemyDamageScript : MonoBehaviour
     {
         Collider[] hit = Physics.OverlapSphere(transform.position, .1f, playerLayer);
 
-        if (hit.Length > 0)
+        if (hit.Length > 0 )
         {
-            if (hit[0].gameObject.tag == MyTags.PLAYER_TAG)
+            if (hit[0].gameObject.tag == MyTags.PLAYER_TAG )
             {
                 hit[0].gameObject.GetComponent<PlayerHealthScript>().DealDamage(damageAmount);
             }
+            
         }
+        
     }
 }
