@@ -22,7 +22,15 @@ public class EnemyScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Enemy();
+        if (GameplayControllerScript.instance.isPlayerAlive)
+        {
+            Enemy();
+        }
+        else
+        {
+            anim.SetTrigger(MyTags.STOP_TRIGGER);
+        }
+        
     }
 
     private void Enemy()
