@@ -11,6 +11,8 @@ public class GameplayControllerScript : MonoBehaviour
     [HideInInspector]
     public bool isPlayerAlive = false;
 
+    public GameObject gameoverPanel;
+
 
     void Awake()
     {
@@ -23,6 +25,10 @@ public class GameplayControllerScript : MonoBehaviour
         timerText.text = "Timer: " + timerValue.ToString("F0");
     }
 
+    void Start()
+    {
+        gameoverPanel.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
@@ -57,5 +63,11 @@ public class GameplayControllerScript : MonoBehaviour
     public void DisplayHealth(int healthValue)
     {
         healthText.text = "Health: " + healthValue;
+    }
+
+    public void Gameover()
+    {
+        gameoverPanel.SetActive(true);
+        Time.timeScale = 0;
     }
 }

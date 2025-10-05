@@ -30,6 +30,7 @@ public class PlayerHealthScript : MonoBehaviour
         {
             anim.Play(MyTags.DEAD_ANIMATION);
             GameplayControllerScript.instance.isPlayerAlive = false;
+            GameplayControllerScript.instance.Gameover();
             playerScript.enabled = false;
         }
 
