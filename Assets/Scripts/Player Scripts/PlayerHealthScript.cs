@@ -11,7 +11,7 @@ public class PlayerHealthScript : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         playerScript = GetComponent<PlayerScript>();
-        
+
     }
 
     void Start()
@@ -44,11 +44,25 @@ public class PlayerHealthScript : MonoBehaviour
 
     void OnTriggerEnter(Collider target)
     {
-        if (target.gameObject.tag == "Coin")
+        if (target.gameObject.tag == "coin")
         {
             GameplayControllerScript.instance.CollectedCoins();
             SoundManagerScript.instance.PlayCollectCoinSound();
             target.gameObject.SetActive(false);
+        }
+
+        if (target.gameObject.tag == "Door")
+        {
+            target.GetComponent<Animator>().Play("DoorOpen");
+        }
+    }
+    
+     void OnTriggerExit(Collider target)
+    {
+        
+        if (target.gameObject.tag == "Door")
+        {
+            target.GetComponent<Animator>().Play("DoorClose");
         }
     }
 }

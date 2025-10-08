@@ -5,7 +5,10 @@ TagManager:
   serializedVersion: 3
   tags:
   - Enemy
-  - Coin
+  - treasure
+  - wall
+  - Door
+  - coin
   layers:
   - Default
   - TransparentFX
