@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
 {
-    private float moveSpeed = .5f;
+    private float moveSpeed = 30f;
     private float rotationSpeed = 4f;
     private float jumpForce = 3f;
     private bool canJump = false;
@@ -54,7 +54,7 @@ public class PlayerScript : MonoBehaviour
         verticalMove = Input.GetAxisRaw("Vertical");
     }
 
-    void PlayerMove()
+    /*void PlayerMove()
     {
         if(verticalMove != 0)
         {
@@ -63,7 +63,21 @@ public class PlayerScript : MonoBehaviour
         rotY += horizontalMove * rotationSpeed;
         rb.rotation = Quaternion.Euler(0f, rotY, 0);
 
+    }*/
+
+    void PlayerMove()
+    {
+        Vector3 moveDirection = transform.forward * verticalMove * moveSpeed;
+
+        // Move with physics
+        rb.linearVelocity = new Vector3(moveDirection.x, rb.linearVelocity.y, moveDirection.z);
+
+        // Handle rotation
+        rotY += horizontalMove * rotationSpeed;
+        rb.rotation = Quaternion.Euler(0f, rotY, 0f);
     }
+
+    
 
     void PlayerAnimate() 
     {
@@ -112,7 +126,7 @@ public class PlayerScript : MonoBehaviour
             if (canJump)
             {
                 canJump = false;
-                rb.AddForce(Vector3.up * moveSpeed * jumpForce, ForceMode.Impulse);
+                rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                 anim.SetTrigger(MyTags.JUMP_TRIGGER);
             }
         }
