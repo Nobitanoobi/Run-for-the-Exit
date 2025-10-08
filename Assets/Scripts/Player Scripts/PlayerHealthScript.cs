@@ -11,6 +11,11 @@ public class PlayerHealthScript : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         playerScript = GetComponent<PlayerScript>();
+        
+    }
+
+    void Start()
+    {
         GameplayControllerScript.instance.DisplayHealth(health);
     }
 
