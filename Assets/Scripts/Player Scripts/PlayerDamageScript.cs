@@ -15,7 +15,7 @@ public class PlayerDamageScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider[] hit = Physics.OverlapSphere(transform.position, .8f, enemyLayer);
+        Collider[] hit = Physics.OverlapSphere(transform.position, .99f, enemyLayer);
 
         if (hit.Length > 0)
         {

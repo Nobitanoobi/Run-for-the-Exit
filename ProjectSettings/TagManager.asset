@@ -9,6 +9,7 @@ TagManager:
   - wall
   - Door
   - coin
+  - ExitDoor
   layers:
   - Default
   - TransparentFX

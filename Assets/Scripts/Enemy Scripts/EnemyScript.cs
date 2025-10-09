@@ -11,6 +11,8 @@ public class EnemyScript : MonoBehaviour
     private float watchThreshold = 70;
     public GameObject hitBox;
 
+    //[SerializeField] AudioSource enemyAttackSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
@@ -58,6 +60,7 @@ public class EnemyScript : MonoBehaviour
             if (anim.GetCurrentAnimatorStateInfo(0).IsName(MyTags.RUN_ANIMATION))
             {
                 anim.SetTrigger(MyTags.ATTACK_TRIGGER);
+                //enemyAttackSound.Play();
             }
         }
         else

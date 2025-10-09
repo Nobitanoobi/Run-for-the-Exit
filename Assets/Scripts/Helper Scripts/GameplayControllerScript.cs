@@ -1,5 +1,7 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class GameplayControllerScript : MonoBehaviour
 {
 
@@ -51,7 +53,17 @@ public class GameplayControllerScript : MonoBehaviour
     void CountDown()
     {
         timerValue -= Time.deltaTime;
-        timerText.text = "Timer: " + timerValue.ToString("F0");
+        if (timerValue < 0)
+        {
+            timerValue = 0;
+            Gameover();
+        }
+        else
+        {
+            timerText.text = "Timer: " + timerValue.ToString("F0");
+        }
+        
+        
     }
 
     public void CollectedCoins()
@@ -69,5 +81,25 @@ public class GameplayControllerScript : MonoBehaviour
     {
         gameoverPanel.SetActive(true);
         Time.timeScale = 0;
+    }
+
+    public void LoadNextScene()
+    {
+        int currentScene = SceneManager.GetActiveScene().buildIndex;
+        if (currentScene == SceneManager.sceneCountInBuildSettings)
+        {
+            SceneManager.LoadScene("MainMenu");
+        }
+        else
+        {
+            SceneManager.LoadScene(currentScene + 1);
+        }
+    }
+    
+    public void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1;
+
     }
 }

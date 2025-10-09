@@ -19,6 +19,9 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject hitBox;
 
+    public AudioSource runSound;
+    public AudioSource attackSound;
+
     
 
 
@@ -89,6 +92,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     isPlayerMove = true;
                     anim.SetTrigger(MyTags.RUN_TRIGGER);
+                    runSound.Play();
                 }
             }
         }
@@ -100,6 +104,7 @@ public class PlayerScript : MonoBehaviour
                 {
                     isPlayerMove = false;
                     anim.SetTrigger(MyTags.STOP_TRIGGER);
+                    runSound.Pause();
                 }
             }
         }
@@ -113,6 +118,7 @@ public class PlayerScript : MonoBehaviour
             !anim.GetCurrentAnimatorStateInfo(0).IsName(MyTags.RUN_ATTACK_ANIMATION))
             {
                 anim.SetTrigger(MyTags.ATTACK_TRIGGER);
+                attackSound.Play();
             }
         }
     }

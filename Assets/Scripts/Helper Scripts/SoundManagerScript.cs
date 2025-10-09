@@ -6,6 +6,8 @@ public class SoundManagerScript : MonoBehaviour
 
     public static SoundManagerScript instance;
 
+    public AudioSource coinSound;
+
     void Awake()
     {
         MakeInstance();
@@ -25,6 +27,6 @@ public class SoundManagerScript : MonoBehaviour
 
     public void PlayCollectCoinSound()
     {
-        GetComponent<AudioSource>().Play();
+        coinSound.Play();
     }
 }

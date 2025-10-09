@@ -6,6 +6,10 @@ public class PlayerHealthScript : MonoBehaviour
     private Animator anim;
     private PlayerScript playerScript;
 
+    [SerializeField] AudioSource playerDamageSound;
+    [SerializeField] AudioSource doorSound;
+
+
 
     private void Awake()
     {
@@ -22,7 +26,7 @@ public class PlayerHealthScript : MonoBehaviour
     public void DealDamage(int damageAmount)
     {
         health -= damageAmount;
-
+        playerDamageSound.Play();
 
         if (health < 0)
         {
@@ -54,6 +58,11 @@ public class PlayerHealthScript : MonoBehaviour
         if (target.gameObject.tag == "Door")
         {
             target.GetComponent<Animator>().Play("DoorOpen");
+            doorSound.Play();
+        }
+        if (target.gameObject.tag == "ExitDoor")
+        {
+            GameplayControllerScript.instance.LoadNextScene();
         }
     }
     

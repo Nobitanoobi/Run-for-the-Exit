@@ -5,6 +5,7 @@ public class EnemyHealthScript : MonoBehaviour
     public int health = 100;
     private Animator anim;
     private EnemyScript enemyScript;
+    [SerializeField] AudioSource enemyDeadSound;
 
 
     private void Awake()
@@ -26,7 +27,10 @@ public class EnemyHealthScript : MonoBehaviour
         {
             enemyScript.enabled = false;
             anim.Play(MyTags.DEAD_ANIMATION);
+            enemyDeadSound.Play();
+            gameObject.GetComponent<BoxCollider>().enabled = false;
             Invoke("DisableEnemy", 3f);
+            
         }
     }
 
