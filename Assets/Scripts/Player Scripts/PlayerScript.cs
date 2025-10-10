@@ -55,6 +55,11 @@ public class PlayerScript : MonoBehaviour
     {
         horizontalMove = Input.GetAxisRaw("Horizontal");
         verticalMove = Input.GetAxisRaw("Vertical");
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameplayControllerScript.instance.Pause();
+        }
     }
 
     /*void PlayerMove()

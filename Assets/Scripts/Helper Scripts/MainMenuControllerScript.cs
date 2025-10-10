@@ -28,11 +28,11 @@ public class MainMenuControllerScript : MonoBehaviour
     }
     public void LoadLevel2()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level2");
     }
     public void LoadLevel3()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("Level3");
     }
 
 

@@ -62,6 +62,7 @@ public class EnemyScript : MonoBehaviour
                 anim.SetTrigger(MyTags.ATTACK_TRIGGER);
                 //enemyAttackSound.Play();
             }
+            transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
         }
         else
         {

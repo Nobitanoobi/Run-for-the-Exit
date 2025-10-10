@@ -8,12 +8,13 @@ public class GameplayControllerScript : MonoBehaviour
     public static GameplayControllerScript instance;
     private Text coinText, healthText, timerText;
 
-    private float timerValue = 99;
+    private float timerValue = 190;
     private float coinValue = 0;
     [HideInInspector]
     public bool isPlayerAlive = false;
 
     public GameObject gameoverPanel;
+    public GameObject pausePanel;
 
 
     void Awake()
@@ -86,7 +87,7 @@ public class GameplayControllerScript : MonoBehaviour
     public void LoadNextScene()
     {
         int currentScene = SceneManager.GetActiveScene().buildIndex;
-        if (currentScene == SceneManager.sceneCountInBuildSettings)
+        if (currentScene == (SceneManager.sceneCountInBuildSettings - 1))
         {
             SceneManager.LoadScene("MainMenu");
         }
@@ -95,11 +96,31 @@ public class GameplayControllerScript : MonoBehaviour
             SceneManager.LoadScene(currentScene + 1);
         }
     }
-    
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
 
+    }
+
+    public void Pause()
+    {
+        if (isPlayerAlive)
+        {
+            Time.timeScale = 0;
+            pausePanel.SetActive(true);
+        }
+    }
+    public void resume()
+    {
+        pausePanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
     }
 }
